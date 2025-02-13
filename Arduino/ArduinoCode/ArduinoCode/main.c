@@ -12,6 +12,8 @@
 
 
 
+
+
 uint8_t GetPortB (void)
 {
     return(PINB & 0b00111111);

@@ -41,20 +41,23 @@ int main(void)
         int32_t steps_x = 0;
         int32_t steps_y = 0;
 
-        if(buttons & B_X_NEG) {
+        if(!(buttons & B_X_NEG)) {
             steps_x = -20;
         }
-        if(buttons & B_X_POS) {
+        if(!(buttons & B_X_POS)) {
             steps_x = 20;
         }
-        if(buttons & B_Y_NEG) {
+        if(!(buttons & B_Y_NEG)) {
             steps_y = -20;
         }
-        if(buttons & B_Y_POS) {
+        if(!(buttons & B_Y_POS)) {
             steps_y = 20;
         }
 
-        MoveSteps(steps_x, steps_y);
+        if(steps_x == 0 && steps_y == 0) {
+            MoveSteps(steps_x, steps_y);
+        }
+
 
 
         _delay_ms(1);

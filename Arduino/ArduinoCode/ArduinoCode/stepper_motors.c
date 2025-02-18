@@ -9,7 +9,7 @@
 #include "bios_timer_int.h"
 #include "bios_io.h"
 #include "limit_switches.h"
-
+#include <math.h>
 
 
 
@@ -51,6 +51,11 @@ void StepperInit(void)
 
 //Moves both stepper motors the specified number of steps
 void MoveSteps(int32_t steps_x, int32_t steps_y) {
+
+    if(steps_x == 0 && steps_y == 0) {
+        return 0;
+    }
+
     //used to decide which steppers to pulse
     active_steppers = 0;
     //assume direction is positive, will set negative if needed later
@@ -60,20 +65,26 @@ void MoveSteps(int32_t steps_x, int32_t steps_y) {
     if(steps_x != 0) {
         active_steppers |= STEP_X;
         if(steps_x < 0) {
-            direction &= DIR_X;
-            steps_x *= -1;
+            direction &= ~DIR_X;
         }
     }
 
     //set y axis active and direction
-    if(steps_y > 0) {
+    if(steps_y != 0) {
         active_steppers |= STEP_Y;
         if(steps_y < 0) {
-            direction &= DIR_Y;
-            steps_y *= -1;
+            direction &= ~DIR_Y;
         }
     }
 
+    steps_x = fabs(steps_x);
+    steps_y = fabs(steps_y);
+
+
+
+    if(active_steppers) {
+        SetPortB((GetPortB() & ~(DIR_X | DIR_Y)) | direction);
+    }
 
 
     Timer1_initialize( timer_freq, &PulseFn, prescaler);
@@ -105,7 +116,7 @@ void MoveSteps(int32_t steps_x, int32_t steps_y) {
         }
     }
 
-
+    SetPortB(GetPortB() & ~((STEP_X | STEP_Y)| (DIR_X | DIR_Y)) );
     Timer1_shutdown();
 }
 

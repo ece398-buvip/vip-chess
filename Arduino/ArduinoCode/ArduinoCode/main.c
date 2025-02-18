@@ -7,67 +7,58 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include "bios_timer_int.h"
+#include <util/delay.h>
+
+#include "bios_io.h"
+#include "stepper_motors.h"
 
 
 
+#define F_CPU 16000000
 
-
-
-uint8_t GetPortB (void)
-{
-    return(PINB & 0b00111111);
-}
-
-void SetPortB(uint8_t x) {
-    PORTB = (PORTB & 0b11000000) | (x & 0b00111111);
-}
-
-
-
-
-#define Stepper1 0b00000001
-
-static volatile uint8_t     semaphore = 0;  // volatile keyword is very important here!
-static volatile uint16_t duty_cycle = 312/2;
-
-
-void fn(void) {
-    static uint16_t cnt = 0;
-    static uint16_t pwm = 0;
-
-    if(cnt<312) cnt++;
-    else {
-        cnt = 0;
-        semaphore = 1;
-        pwm = duty_cycle;
-    }
-
-    if(pwm>cnt) {
-        SetPortB(GetPortB() | Stepper1);
-    } else {
-        SetPortB(GetPortB() & ~Stepper1);
-    }
-}
-
+#define B_X_NEG 0b00000001
+#define B_X_POS 0b00000010
+#define B_Y_NEG 0b00000100
+#define B_Y_POS 0b00001000
+#define B_ALL   0b00001111
 
 int main(void)
 {
-    DDRB |= 0b00000001;
-    PORTB |= 0b00000001;
 
-    Timer1_initialize( 51200, &fn, timer_prescale_256);
     sei();
+
+    StepperInit();
+    SetDDRC(GetDDRC() & ~B_ALL);
+    SetPortC(GetPortC() | B_ALL);
+
 
 
     /* Replace with your application code */
     while (1)
     {
+        uint8_t buttons = GetPortC() & B_ALL;
 
-        while(semaphore == 0);
-        semaphore = 0;
+        int32_t steps_x = 0;
+        int32_t steps_y = 0;
+
+        if(buttons & B_X_NEG) {
+            steps_x = -20;
+        }
+        if(buttons & B_X_POS) {
+            steps_x = 20;
+        }
+        if(buttons & B_Y_NEG) {
+            steps_y = -20;
+        }
+        if(buttons & B_Y_POS) {
+            steps_y = 20;
+        }
+
+        MoveSteps(steps_x, steps_y);
 
 
+        _delay_ms(1);
     }
+    return 0;
 }
 

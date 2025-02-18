@@ -132,6 +132,12 @@
     <Compile Include="bios_timer_int.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="limit_switches.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="limit_switches.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>

@@ -9,30 +9,26 @@
 #ifndef BIOS_IO_H_
 #define BIOS_IO_H_
 
+#include <stdint.h>
 #include <avr/io.h>
 
 uint8_t GetPortD (void);
-
 void SetPortD(uint8_t x);
-
 uint8_t GetDDRD(void);
-
-void SetDDRD(uint8_t direction, uint8_t pull_up);
+void SetDDRD(uint8_t direction);
 
 
 
 uint8_t GetPortC (void);
-
 void SetPortC(uint8_t x);
-
 uint8_t GetDDRC(void);
-
-void SetDDRC(uint8_t direction, uint8_t pull_up)
+void SetDDRC(uint8_t direction);
 
 
 uint8_t GetPortB (void);
-
 void SetPortB(uint8_t x);
+uint8_t GetDDRB(void);
+void SetDDRB(uint8_t direction);
 
 
 

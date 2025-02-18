@@ -120,10 +120,10 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="bios_pins.c">
+    <Compile Include="bios_io.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="bios_pins.h">
+    <Compile Include="bios_io.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="bios_timer_int.c">

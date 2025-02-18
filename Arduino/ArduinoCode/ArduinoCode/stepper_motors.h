@@ -22,9 +22,9 @@
 #define DIR_Y 0b00001000
 
 
-#define pulse_freq 200
-#define pwm_res 255
-#define prescaler timer_prescale_64
+#define pulse_freq 1000
+#define pwm_res 10
+#define prescaler timer_prescale_256
 #define timer_freq  ((uint16_t)pulse_freq * (pwm_res + 1))
 
 #define duty_cycle pwm_res / 2
@@ -34,7 +34,7 @@
 
 void StepperInit();
 
-void MoveSteps(int32_t steps_x, int32_t steps_y);
+void MoveSteps(int steps_x, int steps_y);
 
 
 

@@ -39,6 +39,7 @@ SUBDIRS :=
 C_SRCS +=  \
 ../bios_io.c \
 ../bios_timer_int.c \
+../bios_uart0.c \
 ../limit_switches.c \
 ../main.c \
 ../stepper_motors.c
@@ -53,6 +54,7 @@ ASM_SRCS +=
 OBJS +=  \
 bios_io.o \
 bios_timer_int.o \
+bios_uart0.o \
 limit_switches.o \
 main.o \
 stepper_motors.o
@@ -60,6 +62,7 @@ stepper_motors.o
 OBJS_AS_ARGS +=  \
 bios_io.o \
 bios_timer_int.o \
+bios_uart0.o \
 limit_switches.o \
 main.o \
 stepper_motors.o
@@ -67,6 +70,7 @@ stepper_motors.o
 C_DEPS +=  \
 bios_io.d \
 bios_timer_int.d \
+bios_uart0.d \
 limit_switches.d \
 main.d \
 stepper_motors.d
@@ -74,6 +78,7 @@ stepper_motors.d
 C_DEPS_AS_ARGS +=  \
 bios_io.d \
 bios_timer_int.d \
+bios_uart0.d \
 limit_switches.d \
 main.d \
 stepper_motors.d
@@ -100,6 +105,13 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./bios_timer_int.o: .././bios_timer_int.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./bios_uart0.o: .././bios_uart0.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

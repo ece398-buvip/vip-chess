@@ -11,6 +11,7 @@
 
 #include "bios_io.h"
 #include "stepper_motors.h"
+#include "bios_uart0.h"
 
 
 
@@ -27,6 +28,9 @@ int main(void)
 
     sei();
 
+
+    uart0_initialize(uart_bps_9600);
+
     StepperInit();
     SetDDRC(GetDDRC() & ~B_ALL);
     SetPortC(GetPortC() | B_ALL);
@@ -38,8 +42,8 @@ int main(void)
     {
         uint8_t buttons = GetPortC() & B_ALL;
 
-        int32_t steps_x = 0;
-        int32_t steps_y = 0;
+        int steps_x = 0;
+        int steps_y = 0;
 
         if(!(buttons & B_X_NEG)) {
             steps_x = -20;
@@ -54,13 +58,12 @@ int main(void)
             steps_y = 20;
         }
 
-        if(steps_x == 0 && steps_y == 0) {
-            MoveSteps(steps_x, steps_y);
-        }
+        MoveSteps(steps_x, steps_y);
 
 
 
-        _delay_ms(1);
+
+        _delay_ms(0);
     }
     return 0;
 }

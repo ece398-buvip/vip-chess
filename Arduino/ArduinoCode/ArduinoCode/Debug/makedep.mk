@@ -6,6 +6,8 @@ bios_io.c
 
 bios_timer_int.c
 
+bios_uart0.c
+
 limit_switches.c
 
 main.c

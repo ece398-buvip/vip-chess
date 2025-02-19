@@ -7,6 +7,7 @@
 
 #include "limit_switches.h"
 
+
 void LimitSwitchesInit() {
     SetDDRD(GetDDRD() & ~LS_ALL);
     SetPortD(GetPortD() | LS_ALL);
@@ -14,7 +15,8 @@ void LimitSwitchesInit() {
 
 //returns whether or not a specific limit switch is activated
 bool CheckLimitSwitch(uint8_t limit_switch) {
-    return (GetPortD() & limit_switch);
+    bool out = (GetPortD() & ~limit_switch);
+    return out;
 }
 
 bool CheckLimitSwitchesX() {

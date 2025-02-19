@@ -27,7 +27,7 @@ bool CheckLimitSwitchesX();
 
 bool CheckLimitSwitchesY();
 
-bool CheckLimitSwitchesAll()
+bool CheckLimitSwitchesAll();
 
 
 

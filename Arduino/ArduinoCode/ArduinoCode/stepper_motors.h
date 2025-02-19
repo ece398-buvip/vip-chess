@@ -14,6 +14,11 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "bios_timer_int.h"
+#include "bios_io.h"
+#include "limit_switches.h"
+#include "bios_uart0.h"
+#include <math.h>
+#include <stdlib.h>
 
 
 #define STEP_X 0b00000001
@@ -34,7 +39,7 @@
 
 void StepperInit();
 
-void MoveSteps(int steps_x, int steps_y);
+bool MoveSteps(int steps_x, int steps_y);
 
 
 

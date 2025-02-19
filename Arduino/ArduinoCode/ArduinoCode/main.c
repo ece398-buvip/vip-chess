@@ -5,9 +5,10 @@
  * Author : steoh
  */
 
+#include "global.h"
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
 
 #include "bios_io.h"
 #include "stepper_motors.h"
@@ -15,7 +16,8 @@
 
 
 
-#define F_CPU 16000000
+
+
 
 #define B_X_NEG 0b00000001
 #define B_X_POS 0b00000010
@@ -63,7 +65,7 @@ int main(void)
 
 
 
-        _delay_ms(0);
+        _delay_ms(0.1);
     }
     return 0;
 }

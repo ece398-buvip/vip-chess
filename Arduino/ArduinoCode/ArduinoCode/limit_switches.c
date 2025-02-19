@@ -16,3 +16,15 @@ void LimitSwitchesInit() {
 bool CheckLimitSwitch(uint8_t limit_switch) {
     return (GetPortD() & limit_switch);
 }
+
+bool CheckLimitSwitchesX() {
+    return CheckLimitSwitch(LS_NEG_X | LS_POS_X);
+}
+
+bool CheckLimitSwitchesY() {
+    return CheckLimitSwitch(LS_NEG_Y | LS_POS_Y);
+}
+
+bool CheckLimitSwitchesAll() {
+    return CheckLimitSwitch(LS_ALL);
+}

@@ -151,6 +151,9 @@
     <Compile Include="bios_uart0.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="global.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="limit_switches.c">
       <SubType>compile</SubType>
     </Compile>

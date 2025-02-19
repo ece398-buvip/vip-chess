@@ -6,12 +6,7 @@
  */
 
 #include "stepper_motors.h"
-#include "bios_timer_int.h"
-#include "bios_io.h"
-#include "limit_switches.h"
-#include "bios_uart0.h"
-#include <math.h>
-#include <stdlib.h>
+
 
 
 
@@ -52,12 +47,15 @@ void StepperInit(void)
 
 
 
+
+
+
 //Moves both stepper motors the specified number of steps
-void MoveSteps(int steps_x, int steps_y) {
+bool MoveSteps(int steps_x, int steps_y) {
 
     if(steps_x == 0 && steps_y == 0) {
         SetPortB(GetPortB() & ~((STEP_X | STEP_Y)) );
-        return;
+        return true;
     }
 
     //used to decide which steppers to pulse
@@ -104,7 +102,11 @@ void MoveSteps(int steps_x, int steps_y) {
 
         //keeps track of steps and deactivates stepper when number of steps is complete
 
-
+        if(CheckLimitSwitchesAll()) {
+            SetPortB(GetPortB() & ~((STEP_X | STEP_Y)) );
+            Timer1_shutdown();
+            return false;
+        }
 
         if(steps_x >= 0) {
             steps_x--;
@@ -127,6 +129,7 @@ void MoveSteps(int steps_x, int steps_y) {
 
     SetPortB(GetPortB() & ~((STEP_X | STEP_Y)) );
     Timer1_shutdown();
+    return true;
 }
 
 

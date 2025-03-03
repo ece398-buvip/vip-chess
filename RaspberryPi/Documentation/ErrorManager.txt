@@ -1,0 +1,1 @@
+This will take any errors that happen, such as the player doing an illegal move, and provide feedback to the player to let them know there is an issue.  Basically display a message to the display explaining the issue and set the leds to red or something

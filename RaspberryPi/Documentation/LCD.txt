@@ -1,0 +1,1 @@
+File for controlling the LCD display and the rotary encoder for controlling it.  Can set up menus where you can select different options and things like that

@@ -1,0 +1,1 @@
+When we move a piece we need to make sure not to run into other pieces, so we need some way to use the known board state to move pieces along a path.  This file will basically just generate a path from one position to another that avoids other pieces

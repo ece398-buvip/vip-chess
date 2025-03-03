@@ -1,0 +1,1 @@
+Stores the state of the board from the reed switch states and interprets changes in the reed switch states

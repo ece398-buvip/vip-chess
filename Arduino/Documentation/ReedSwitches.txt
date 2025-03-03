@@ -1,0 +1,1 @@
+Loops through the reed switches using the 3to8 decoder and gpio extender, like a keypad kind of

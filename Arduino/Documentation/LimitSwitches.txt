@@ -1,0 +1,1 @@
+Lets you read the limit switches.  Normally open and sets to ground when active.  Use pull up resistor

@@ -1,0 +1,3 @@
+This module will be responsible for selecting the correct chess bot to use based on difficulty or other considerations.  Not sure if there is a standard for how these bots work but we will need a way to translate the output of the chess bot to something our GameManager module can understand.
+
+One function for GetAITurn() or something like that gives the board state to the ai and returns a move for the ai to make

@@ -1,0 +1,1 @@
+the main script isn't gonna do a whole ton other than init some stuff and run the main loop

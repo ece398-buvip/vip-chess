@@ -1,0 +1,1 @@
+list of commands sent from the pi to the arduino. once one of those commands is sent, there will be a function for each command that executes the desired behavior.  List of commands will be added here later

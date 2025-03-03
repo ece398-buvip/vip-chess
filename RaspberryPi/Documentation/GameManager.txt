@@ -1,0 +1,1 @@
+This is the main module that will control everything.  It will also be the most complicated because it needs to know all the rules of chess and manage the state of the board, so it may be split into multiple files

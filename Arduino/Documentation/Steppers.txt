@@ -1,0 +1,1 @@
+Controls stepper motor hardware.  Function for stepping a certain number of steps and returning when finished. stops moving when in contact with a limit switch.  allows movement of both axes.

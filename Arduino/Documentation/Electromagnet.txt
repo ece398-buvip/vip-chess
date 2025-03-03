@@ -1,0 +1,1 @@
+allows control of the electromagnet.  we have both polarities so we might as well allow use of both, so we can assign two pins for each direction of the motor controller chip

@@ -1,0 +1,3 @@
+Translates a move from squares on the board to actual coordinates on the board.  If one piece is going to capture another, it first moves the captured piece out of the way and then makes the move.  It makes a request from the pathfinding script to get a path.  
+
+When moving along a path it keeps track of the derivative to guess the actual position of the piece.  Needs to know radius of magnet to calculate this

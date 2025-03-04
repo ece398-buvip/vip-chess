@@ -18,6 +18,7 @@ uint8_t active_steppers = 0;
 //Function called by the interrupt to create a pulse signal for the stepper motors
 //Could be made better by placing a lot of this code inside the MoveSteps function
 void PulseFn(void) {
+
     static uint16_t cnt = 0;
 
     //increment count if still under the max value, otherwise reset
@@ -60,6 +61,7 @@ bool MoveSteps(int steps_x, int steps_y) {
 
     //used to decide which steppers to pulse
     active_steppers = 0;
+
     //assume direction is positive, will set negative if needed later
     uint8_t direction = DIR_X | DIR_Y;
 
@@ -80,9 +82,13 @@ bool MoveSteps(int steps_x, int steps_y) {
     }
 
     char buffer[32];
-    dtostrf((float)steps_y, 5, 3, buffer);
+    dtostrf((float)steps_x, 5, 3, buffer);
     uart0_puts(buffer);
     uart0_puts("\t\n");
+
+    if(CheckLimitSwitchesAll()) {
+        uart0_puts("Switches on");
+    }
 
     steps_x = abs(steps_x);
     steps_y = abs(steps_y);

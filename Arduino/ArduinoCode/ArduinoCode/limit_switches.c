@@ -15,7 +15,7 @@ void LimitSwitchesInit() {
 
 //returns whether or not a specific limit switch is activated
 bool CheckLimitSwitch(uint8_t limit_switch) {
-    bool out = (GetPortD() & ~limit_switch);
+    bool out = (bool)(~GetPortD() & limit_switch);
     return out;
 }
 

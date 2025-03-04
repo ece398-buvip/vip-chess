@@ -337,7 +337,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xbf2
+.text           0x00000000      0xc02
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -489,41 +489,41 @@ END GROUP
                 0x0000044e       0x1a stepper_motors.o
                 0x0000044e                StepperInit
  .text.MoveSteps
-                0x00000468      0x178 stepper_motors.o
+                0x00000468      0x188 stepper_motors.o
                 0x00000468                MoveSteps
  .text.avr-libc.fplib
-                0x000005e0       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
-                0x000005e0                __floatunsisf
-                0x000005e4                __floatsisf
+                0x000005f0       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                0x000005f0                __floatunsisf
+                0x000005f4                __floatsisf
  .text.libgcc.div
-                0x0000065a       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
-                0x0000065a                __udivmodsi4
+                0x0000066a       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+                0x0000066a                __udivmodsi4
  .text.libgcc.div
-                0x0000069e       0x2e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
-                0x0000069e                __divmodsi4
+                0x000006ae       0x2e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+                0x000006ae                __divmodsi4
  .text.libgcc.div
-                0x000006cc       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
-                0x000006cc                __negsi2
+                0x000006dc       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+                0x000006dc                __negsi2
  .text.avr-libc
-                0x000006dc       0x40 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(dtostrf.o)
-                0x000006dc                dtostrf
+                0x000006ec       0x40 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(dtostrf.o)
+                0x000006ec                dtostrf
  .text.avr-libc
-                0x0000071c      0x2b4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(dtoa_prf.o)
-                0x0000071c                dtoa_prf
+                0x0000072c      0x2b4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(dtoa_prf.o)
+                0x0000072c                dtoa_prf
  .text.avr-libc
-                0x000009d0      0x1b0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ftoa_engine.o)
-                0x000009d0                __ftoa_engine
+                0x000009e0      0x1b0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ftoa_engine.o)
+                0x000009e0                __ftoa_engine
  .text.libgcc.prologue
-                0x00000b80       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_prologue.o)
-                0x00000b80                __prologue_saves__
+                0x00000b90       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_prologue.o)
+                0x00000b90                __prologue_saves__
  .text.libgcc.prologue
-                0x00000bb8       0x36 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_epilogue.o)
-                0x00000bb8                __epilogue_restores__
-                0x00000bee                . = ALIGN (0x2)
+                0x00000bc8       0x36 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_epilogue.o)
+                0x00000bc8                __epilogue_restores__
+                0x00000bfe                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000bee        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000bee                _exit
-                0x00000bee                exit
+ .fini9         0x00000bfe        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000bfe                _exit
+                0x00000bfe                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -542,11 +542,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000bee        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000bfe        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000bf2                _etext = .
+                0x00000c02                _etext = .
 
-.data           0x00800100        0xa load address 0x00000bf2
+.data           0x00800100       0x16 load address 0x00000c02
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -556,35 +556,35 @@ END GROUP
  .rodata.prescales.1615
                 0x00800100        0x6 bios_timer_int.o
  .rodata.str1.1
-                0x00800106        0x3 stepper_motors.o
+                0x00800106        0xf stepper_motors.o
  *(.gnu.linkonce.r*)
-                0x0080010a                . = ALIGN (0x2)
- *fill*         0x00800109        0x1 
-                0x0080010a                _edata = .
-                0x0080010a                PROVIDE (__data_end, .)
+                0x00800116                . = ALIGN (0x2)
+ *fill*         0x00800115        0x1 
+                0x00800116                _edata = .
+                0x00800116                PROVIDE (__data_end, .)
 
-.bss            0x0080010a        0x6
-                0x0080010a                PROVIDE (__bss_start, .)
+.bss            0x00800116        0x6
+                0x00800116                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.Timer1_Overflow_function
-                0x0080010a        0x2 bios_timer_int.o
- .bss.cnt.1934  0x0080010c        0x2 stepper_motors.o
+                0x00800116        0x2 bios_timer_int.o
+ .bss.cnt.1934  0x00800118        0x2 stepper_motors.o
  .bss.active_steppers
-                0x0080010e        0x1 stepper_motors.o
-                0x0080010e                active_steppers
+                0x0080011a        0x1 stepper_motors.o
+                0x0080011a                active_steppers
  .bss.semaphore
-                0x0080010f        0x1 stepper_motors.o
+                0x0080011b        0x1 stepper_motors.o
  *(COMMON)
-                0x00800110                PROVIDE (__bss_end, .)
-                0x00000bf2                __data_load_start = LOADADDR (.data)
-                0x00000bfc                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0080011c                PROVIDE (__bss_end, .)
+                0x00000c02                __data_load_start = LOADADDR (.data)
+                0x00000c18                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800110        0x0
+.noinit         0x0080011c        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800110                _end = .
+                0x0080011c                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -674,7 +674,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1542
+.debug_info     0x00000000     0x1567
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4      0x1fd bios_io.o
@@ -682,7 +682,7 @@ END GROUP
  .debug_info    0x00000935      0x531 bios_uart0.o
  .debug_info    0x00000e66      0x1b4 limit_switches.o
  .debug_info    0x0000101a      0x200 main.o
- .debug_info    0x0000121a      0x328 stepper_motors.o
+ .debug_info    0x0000121a      0x34d stepper_motors.o
 
 .debug_abbrev   0x00000000      0xba8
  *(.debug_abbrev)
@@ -694,7 +694,7 @@ END GROUP
  .debug_abbrev  0x00000972      0x119 main.o
  .debug_abbrev  0x00000a8b      0x11d stepper_motors.o
 
-.debug_line     0x00000000      0xd8f
+.debug_line     0x00000000      0xd9b
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000134      0x1be bios_io.o
@@ -702,7 +702,7 @@ END GROUP
  .debug_line    0x00000417      0x45d bios_uart0.o
  .debug_line    0x00000874      0x12e limit_switches.o
  .debug_line    0x000009a2      0x1a1 main.o
- .debug_line    0x00000b43      0x24c stepper_motors.o
+ .debug_line    0x00000b43      0x258 stepper_motors.o
 
 .debug_frame    0x00000000      0x44c
  *(.debug_frame)

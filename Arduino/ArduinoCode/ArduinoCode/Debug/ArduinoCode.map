@@ -546,7 +546,7 @@ END GROUP
  *(.fini0)
                 0x00000c02                _etext = .
 
-.data           0x00800100       0x16 load address 0x00000c02
+.data           0x00800100        0xa load address 0x00000c02
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -556,35 +556,35 @@ END GROUP
  .rodata.prescales.1615
                 0x00800100        0x6 bios_timer_int.o
  .rodata.str1.1
-                0x00800106        0xf stepper_motors.o
+                0x00800106        0x3 stepper_motors.o
  *(.gnu.linkonce.r*)
-                0x00800116                . = ALIGN (0x2)
- *fill*         0x00800115        0x1 
-                0x00800116                _edata = .
-                0x00800116                PROVIDE (__data_end, .)
+                0x0080010a                . = ALIGN (0x2)
+ *fill*         0x00800109        0x1 
+                0x0080010a                _edata = .
+                0x0080010a                PROVIDE (__data_end, .)
 
-.bss            0x00800116        0x6
-                0x00800116                PROVIDE (__bss_start, .)
+.bss            0x0080010a        0x6
+                0x0080010a                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.Timer1_Overflow_function
-                0x00800116        0x2 bios_timer_int.o
- .bss.cnt.1934  0x00800118        0x2 stepper_motors.o
+                0x0080010a        0x2 bios_timer_int.o
+ .bss.cnt.1934  0x0080010c        0x2 stepper_motors.o
  .bss.active_steppers
-                0x0080011a        0x1 stepper_motors.o
-                0x0080011a                active_steppers
+                0x0080010e        0x1 stepper_motors.o
+                0x0080010e                active_steppers
  .bss.semaphore
-                0x0080011b        0x1 stepper_motors.o
+                0x0080010f        0x1 stepper_motors.o
  *(COMMON)
-                0x0080011c                PROVIDE (__bss_end, .)
+                0x00800110                PROVIDE (__bss_end, .)
                 0x00000c02                __data_load_start = LOADADDR (.data)
-                0x00000c18                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000c0c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080011c        0x0
+.noinit         0x00800110        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080011c                _end = .
+                0x00800110                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -674,7 +674,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1567
+.debug_info     0x00000000     0x1576
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4      0x1fd bios_io.o
@@ -682,7 +682,7 @@ END GROUP
  .debug_info    0x00000935      0x531 bios_uart0.o
  .debug_info    0x00000e66      0x1b4 limit_switches.o
  .debug_info    0x0000101a      0x200 main.o
- .debug_info    0x0000121a      0x34d stepper_motors.o
+ .debug_info    0x0000121a      0x35c stepper_motors.o
 
 .debug_abbrev   0x00000000      0xba8
  *(.debug_abbrev)
@@ -727,16 +727,16 @@ END GROUP
  .debug_str     0x0000065a       0x81 main.o
                                 0x21c (size before relaxing)
  .debug_str     0x000006db       0x47 stepper_motors.o
-                                0x26a (size before relaxing)
+                                0x27b (size before relaxing)
 
-.debug_loc      0x00000000      0xc1d
+.debug_loc      0x00000000      0xc0d
  *(.debug_loc)
  .debug_loc     0x00000000       0xc6 bios_io.o
  .debug_loc     0x000000c6      0x18f bios_timer_int.o
  .debug_loc     0x00000255      0x7ea bios_uart0.o
  .debug_loc     0x00000a3f       0x4e limit_switches.o
  .debug_loc     0x00000a8d       0x5f main.o
- .debug_loc     0x00000aec      0x131 stepper_motors.o
+ .debug_loc     0x00000aec      0x121 stepper_motors.o
 
 .debug_macinfo
  *(.debug_macinfo)

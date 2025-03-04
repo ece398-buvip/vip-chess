@@ -21,7 +21,7 @@
 
 void LimitSwitchesInit();
 
-bool CheckLimitSwitches(uint8_t limit_switch);
+bool CheckLimitSwitch(uint8_t limit_switch);
 
 bool CheckLimitSwitchesX();
 

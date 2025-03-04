@@ -86,9 +86,13 @@ bool MoveSteps(int steps_x, int steps_y) {
     uart0_puts(buffer);
     uart0_puts("\t\n");
 
-    if(CheckLimitSwitchesAll()) {
-        uart0_puts("Switches on");
-    }
+    
+    if(CheckLimitSwitch(LS_NEG_X)) {
+        
+    } else if (CheckLimitSwitch(LS_NEG_Y))
+    
+    
+    
 
     steps_x = abs(steps_x);
     steps_y = abs(steps_y);

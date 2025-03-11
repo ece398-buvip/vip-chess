@@ -12,6 +12,13 @@
 #include <stdint.h>
 #include <avr/io.h>
 
+
+typedef enum {
+    PortB,
+    PortC,
+    PortD
+} Port;
+
 uint8_t GetPortD (void);
 void SetPortD(uint8_t x);
 uint8_t GetDDRD(void);
@@ -31,11 +38,6 @@ uint8_t GetDDRB(void);
 void SetDDRB(uint8_t direction);
 
 
-enum Port {
-	PortB = 0,
-	PortC = 1,
-	PortD = 2
-};
 
 
 uint8_t GetPortX(Port port);

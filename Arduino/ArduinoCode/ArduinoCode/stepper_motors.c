@@ -55,7 +55,6 @@ void StepperInit(void)
 bool MoveSteps(int steps_x, int steps_y) {
 
     if(steps_x == 0 && steps_y == 0) {
-        SetPortB(GetPortB() & ~((STEP_X | STEP_Y)) );
         return true;
     }
 
@@ -86,13 +85,31 @@ bool MoveSteps(int steps_x, int steps_y) {
     uart0_puts(buffer);
     uart0_puts("\t\n");
 
-    
+
     if(CheckLimitSwitch(LS_NEG_X)) {
-        
-    } else if (CheckLimitSwitch(LS_NEG_Y))
-    
-    
-    
+        if(steps_x < 0) {
+            return false;
+        }
+    }
+    if (CheckLimitSwitch(LS_POS_X)) {
+        if(steps_x > 0) {
+            return false;
+        }
+    }
+
+    if(CheckLimitSwitch(LS_NEG_Y)) {
+        if(steps_y < 0) {
+            return false;
+        }
+    }
+    if (CheckLimitSwitch(LS_POS_Y)) {
+        if(steps_y > 0) {
+            return false;
+        }
+    }
+
+
+
 
     steps_x = abs(steps_x);
     steps_y = abs(steps_y);
@@ -112,11 +129,37 @@ bool MoveSteps(int steps_x, int steps_y) {
 
         //keeps track of steps and deactivates stepper when number of steps is complete
 
-        if(CheckLimitSwitchesAll()) {
+        bool limitSwitchHit = false;
+        if(CheckLimitSwitch(LS_NEG_X)) {
+            if(!(direction & DIR_X)) {
+                limitSwitchHit = true;
+            }
+        }
+        if (CheckLimitSwitch(LS_POS_X)) {
+            if((direction & DIR_X)) {
+                limitSwitchHit = true;
+            }
+        }
+
+        if(CheckLimitSwitch(LS_NEG_Y)) {
+            if(!(direction & DIR_Y)) {
+                limitSwitchHit = true;
+            }
+        }
+        if (CheckLimitSwitch(LS_POS_Y)) {
+            if(direction & DIR_Y) {
+                limitSwitchHit = true;
+            }
+        }
+
+        if(limitSwitchHit) {
             SetPortB(GetPortB() & ~((STEP_X | STEP_Y)) );
             Timer1_shutdown();
             return false;
         }
+
+
+
 
         if(steps_x >= 0) {
             steps_x--;

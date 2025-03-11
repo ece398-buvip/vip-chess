@@ -93,3 +93,71 @@ void SetDDRB(uint8_t direction)
 
 
 
+
+///////PORT X/////////
+
+uint8_t GetPortX(Port port){
+	switch(port) {
+		case Port.PortB:
+			return GetPortB();
+			break;
+		case Port.PortC:
+			return GetPortC();
+			break;
+		case Port.PortD:
+			return GetPortD();
+			break;
+		default:
+			return GetPortB();			
+	}
+}
+
+
+void SetPortX(Port port, uint8_t x) {
+	switch(port) {
+		case Port.PortB:
+			SetPortB(x);
+			break;
+		case Port.PortC:
+			SetPortC(x);
+			break;
+		case Port.PortD:
+			SetPortD(x);
+			break;
+		default:
+			SetPortB(x);			
+	}
+}
+
+
+uint8_t GetDDRX(Port port) {
+	switch(port) {
+		case Port.PortB:
+			return GetDDRB();
+			break;
+		case Port.PortC:
+			return GetDDRC();
+			break;
+		case Port.PortD:
+			return GetDDRD();
+			break;
+		default:
+			return GetDDRB();			
+	}
+}
+	
+void SetDDRX(Port port, uint8_t direction) {
+	switch(port) {
+		case Port.PortB:
+			SetDDRB(direction);
+			break;
+		case Port.PortC:
+			SetDDRC(direction);
+			break;
+		case Port.PortD:
+			SetDDRD(direction);
+			break;
+		default:
+			SetDDRB(direction);			
+	}
+

@@ -31,5 +31,17 @@ uint8_t GetDDRB(void);
 void SetDDRB(uint8_t direction);
 
 
+enum Port {
+	PortB = 0,
+	PortC = 1,
+	PortD = 2
+};
+
+
+uint8_t GetPortX(Port port);
+void SetPortX(Port port, uint8_t x);
+uint8_t GetDDRX(Port port);
+void SetDDRX(Port port, uint8_t direction);
+
 
 #endif /* BIOS_PINS_H_ */

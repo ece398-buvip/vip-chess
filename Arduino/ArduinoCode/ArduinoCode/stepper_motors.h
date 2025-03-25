@@ -36,7 +36,6 @@
 
 
 
-
 void StepperInit();
 
 bool MoveSteps(int steps_x, int steps_y);

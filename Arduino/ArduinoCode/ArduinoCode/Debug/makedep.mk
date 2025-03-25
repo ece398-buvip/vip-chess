@@ -12,5 +12,7 @@ limit_switches.c
 
 main.c
 
+position_control.c
+
 stepper_motors.c
 

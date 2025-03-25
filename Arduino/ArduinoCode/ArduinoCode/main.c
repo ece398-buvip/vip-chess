@@ -48,16 +48,16 @@ int main(void)
         int steps_y = 0;
 
         if(!(buttons & B_X_NEG)) {
-            steps_x = -20;
+            steps_x = -1000;
         }
         if(!(buttons & B_X_POS)) {
-            steps_x = 20;
+            steps_x = 1000;
         }
         if(!(buttons & B_Y_NEG)) {
-            steps_y = -20;
+            steps_y = -1000;
         }
         if(!(buttons & B_Y_POS)) {
-            steps_y = 20;
+            steps_y = 1000;
         }
 
         MoveSteps(steps_x, steps_y);
@@ -65,7 +65,7 @@ int main(void)
 
 
 
-        _delay_ms(0.1);
+        _delay_ms(1000);
     }
     return 0;
 }

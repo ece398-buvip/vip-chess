@@ -163,6 +163,12 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="position_control.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="position_control.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="stepper_motors.c">
       <SubType>compile</SubType>
     </Compile>

@@ -13,10 +13,10 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include "bios_timer_int.h"
-#include "bios_io.h"
+#include "Bios/bios_timer_int.h"
+#include "Bios/bios_io.h"
 #include "limit_switches.h"
-#include "bios_uart0.h"
+#include "Bios/bios_uart0.h"
 #include <math.h>
 #include <stdlib.h>
 

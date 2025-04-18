@@ -10,10 +10,10 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-#include "bios_io.h"
+#include "Bios/bios_io.h"
 #include "stepper_motors.h"
-#include "bios_uart0.h"
-
+#include "Bios/bios_uart0.h"
+#include "commands.h"
 
 
 
@@ -31,7 +31,7 @@ int main(void)
     sei();
 
 
-    uart0_initialize(uart_bps_9600);
+    CommandsInit();
 
     StepperInit();
     SetDDRC(GetDDRC() & ~B_ALL);

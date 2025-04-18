@@ -9,7 +9,7 @@
 #ifndef LIMIT_SWITCHES_H_
 #define LIMIT_SWITCHES_H_
 
-#include "bios_io.h"
+#include "Bios/bios_io.h"
 #include <stdbool.h>
 
 //Lets define these as the top four bits of port D

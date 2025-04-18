@@ -133,22 +133,28 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="bios_io.c">
+    <Compile Include="Bios\bios_io.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="bios_io.h">
+    <Compile Include="Bios\bios_io.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="bios_timer_int.c">
+    <Compile Include="Bios\bios_timer_int.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="bios_timer_int.h">
+    <Compile Include="Bios\bios_timer_int.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="bios_uart0.c">
+    <Compile Include="Bios\bios_uart0.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="bios_uart0.h">
+    <Compile Include="Bios\bios_uart0.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="commands.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="commands.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="global.h">
@@ -175,6 +181,9 @@
     <Compile Include="stepper_motors.h">
       <SubType>compile</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Bios" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

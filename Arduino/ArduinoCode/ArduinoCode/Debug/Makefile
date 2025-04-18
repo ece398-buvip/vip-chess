@@ -32,14 +32,16 @@ LIB_DEP:=
 LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
-SUBDIRS := 
+SUBDIRS :=  \
+../Bios
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../bios_io.c \
-../bios_timer_int.c \
-../bios_uart0.c \
+../Bios/bios_io.c \
+../Bios/bios_timer_int.c \
+../Bios/bios_uart0.c \
+../commands.c \
 ../limit_switches.c \
 ../main.c \
 ../position_control.c \
@@ -53,36 +55,40 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-bios_io.o \
-bios_timer_int.o \
-bios_uart0.o \
+Bios/bios_io.o \
+Bios/bios_timer_int.o \
+Bios/bios_uart0.o \
+commands.o \
 limit_switches.o \
 main.o \
 position_control.o \
 stepper_motors.o
 
 OBJS_AS_ARGS +=  \
-bios_io.o \
-bios_timer_int.o \
-bios_uart0.o \
+Bios/bios_io.o \
+Bios/bios_timer_int.o \
+Bios/bios_uart0.o \
+commands.o \
 limit_switches.o \
 main.o \
 position_control.o \
 stepper_motors.o
 
 C_DEPS +=  \
-bios_io.d \
-bios_timer_int.d \
-bios_uart0.d \
+Bios/bios_io.d \
+Bios/bios_timer_int.d \
+Bios/bios_uart0.d \
+commands.d \
 limit_switches.d \
 main.d \
 position_control.d \
 stepper_motors.d
 
 C_DEPS_AS_ARGS +=  \
-bios_io.d \
-bios_timer_int.d \
-bios_uart0.d \
+Bios/bios_io.d \
+Bios/bios_timer_int.d \
+Bios/bios_uart0.d \
+commands.d \
 limit_switches.d \
 main.d \
 position_control.d \
@@ -102,21 +108,28 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-./bios_io.o: .././bios_io.c
+Bios/bios_io.o: ../Bios/bios_io.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-./bios_timer_int.o: .././bios_timer_int.c
+Bios/bios_timer_int.o: ../Bios/bios_timer_int.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-./bios_uart0.o: .././bios_uart0.c
+Bios/bios_uart0.o: ../Bios/bios_uart0.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./commands.o: .././commands.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

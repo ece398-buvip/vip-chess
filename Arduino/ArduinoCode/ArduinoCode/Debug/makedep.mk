@@ -2,11 +2,13 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-bios_io.c
+Bios\bios_io.c
 
-bios_timer_int.c
+Bios\bios_timer_int.c
 
-bios_uart0.c
+Bios\bios_uart0.c
+
+commands.c
 
 limit_switches.c
 

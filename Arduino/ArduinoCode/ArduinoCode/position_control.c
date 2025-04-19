@@ -80,3 +80,16 @@ void setPosition(float x, float y) {
     }
 
 }
+
+
+#define BOARD_ORIGIN_X 1
+#define BOARD_ORIGIN_Y 1
+
+#define SPACE_WIDTH 5.875
+
+
+void moveToSpace(uint8_t x, uint8_t y) {
+    float x_cm = BOARD_ORIGIN_X + SPACE_WIDTH * x;
+    float y_cm = BOARD_ORIGIN_X + SPACE_WIDTH * y;
+    setPosition(x_cm, y_cm);
+}

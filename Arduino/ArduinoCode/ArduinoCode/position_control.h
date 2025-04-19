@@ -9,6 +9,7 @@
 #ifndef POSITION_CONTROL_H_
 #define POSITION_CONTROL_H_
 
+#include <stdint.h>
 
 void zeroX();
 
@@ -17,6 +18,8 @@ void zeroY();
 void zeroAll();
 
 void setPosition(float x, float y);
+
+void moveToSpace(uint8_t x, uint8_t y);
 
 
 

@@ -40,6 +40,7 @@ int main(void)
 
 
 
+
     /* Replace with your application code */
     while (1)
     {
@@ -71,10 +72,15 @@ int main(void)
 //         _delay_ms(500);
 //         MoveSteps(0, -500);
 
-        setPosition(0,10);
+        moveToSpace(0, 0);
         _delay_ms(2500);
-        setPosition(0,-10);
+        moveToSpace(7, 7);
         _delay_ms(2500);
+
+//         setPosition(0,10);
+//         _delay_ms(2500);
+//         setPosition(0,-10);
+//         _delay_ms(2500);
 
 
     }

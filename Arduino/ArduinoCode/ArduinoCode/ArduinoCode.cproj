@@ -169,6 +169,12 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="piece_movement.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="piece_movement.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="position_control.c">
       <SubType>compile</SubType>
     </Compile>

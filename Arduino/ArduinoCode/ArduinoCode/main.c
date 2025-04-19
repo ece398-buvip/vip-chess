@@ -14,6 +14,7 @@
 #include "stepper_motors.h"
 #include "Bios/bios_uart0.h"
 #include "commands.h"
+#include "position_control.h"
 
 
 
@@ -42,30 +43,40 @@ int main(void)
     /* Replace with your application code */
     while (1)
     {
-        uint8_t buttons = GetPortC() & B_ALL;
+//         uint8_t buttons = GetPortC() & B_ALL;
+//
+//         int steps_x = 0;
+//         int steps_y = 0;
+//
+//         if(!(buttons & B_X_NEG)) {
+//             steps_x = -1000;
+//         }
+//         if(!(buttons & B_X_POS)) {
+//             steps_x = 1000;
+//         }
+//         if(!(buttons & B_Y_NEG)) {
+//             steps_y = -1000;
+//         }
+//         if(!(buttons & B_Y_POS)) {
+//             steps_y = 1000;
+//         }
+//
+//         MoveSteps(steps_x, steps_y);
 
-        int steps_x = 0;
-        int steps_y = 0;
+//         MoveSteps(500, 0);
+//         _delay_ms(500);
+//         MoveSteps(0, 500);
+//         _delay_ms(500);
+//         MoveSteps(-500, 0);
+//         _delay_ms(500);
+//         MoveSteps(0, -500);
 
-        if(!(buttons & B_X_NEG)) {
-            steps_x = -1000;
-        }
-        if(!(buttons & B_X_POS)) {
-            steps_x = 1000;
-        }
-        if(!(buttons & B_Y_NEG)) {
-            steps_y = -1000;
-        }
-        if(!(buttons & B_Y_POS)) {
-            steps_y = 1000;
-        }
-
-        MoveSteps(steps_x, steps_y);
+        setPosition(0,10);
+        _delay_ms(2500);
+        setPosition(0,-10);
+        _delay_ms(2500);
 
 
-
-
-        _delay_ms(1000);
     }
     return 0;
 }

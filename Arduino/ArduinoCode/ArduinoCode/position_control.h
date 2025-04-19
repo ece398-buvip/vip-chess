@@ -14,10 +14,7 @@ void zeroX();
 
 void zeroY();
 
-void zeroAll() {
-    zeroX();
-    zeroY();
-};
+void zeroAll();
 
 void setPosition(float x, float y);
 

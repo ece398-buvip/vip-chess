@@ -15,20 +15,26 @@
 
 
 
-#define X_WIDTH_CM 76
-#define Y_HEIGHT_CM 48
+#define X_WIDTH_CM 76.0
+#define Y_HEIGHT_CM 48.0
 
 
-#define X_STEPS_TO_CM (7.3 / 1000)  //7.3 cm to 1000 steps
-#define Y_STEPS_TO_CM (7.05 / 1000) //7.05 cm to 1000 steps
+#define X_STEPS_TO_CM (7.5482 / 1000.0)  //7.3 cm to 1000 steps
+#define Y_STEPS_TO_CM (7.015 / 1000.0) //7.05 cm to 1000 steps
 
 
 #define X_WIDTH_STEPS (float)X_WIDTH_CM / X_STEPS_TO_CM
-#define Y_WIDTH_STEPS (float)Y_WIDTH_CM / Y_STEPS_TO_CM
+#define Y_WIDTH_STEPS (float)Y_HEIGHT_CM / Y_STEPS_TO_CM
 
 
 float x_position = 0;
 float y_position = 0;
+
+
+void zeroAll() {
+    zeroX();
+    zeroY();
+}
 
 
 void zeroX() {
@@ -59,15 +65,18 @@ void zeroY() {
 
 
 
-
+//Set position of electromagnet in cm x and y
 void setPosition(float x, float y) {
     float delta_x = x - x_position;
     float delta_y = y - y_position;
 
-    int steps_x = delta_x * X_STEPS_TO_CM;
-    int steps_y = delta_y * Y_STEPS_TO_CM;
+    int steps_x = (int)(delta_x / X_STEPS_TO_CM);
+    int steps_y = (int)(delta_y / Y_STEPS_TO_CM);
 
     bool succeeded = MoveSteps(steps_x, steps_y);
-
+    if(succeeded) {
+        x_position += delta_x;
+        y_position += delta_y;
+    }
 
 }

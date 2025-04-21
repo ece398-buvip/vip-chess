@@ -40,7 +40,7 @@ void zeroAll() {
 void zeroX() {
     bool hit_edge = false;
     while(!hit_edge) {
-        MoveSteps(-20, 0);
+        MoveSteps(-100, 0);
         if(CheckLimitSwitch(LS_NEG_X)) {
             hit_edge = true;
         }
@@ -53,7 +53,7 @@ void zeroX() {
 void zeroY() {
     bool hit_edge = false;
     while(!hit_edge) {
-        MoveSteps(0, -20);
+        MoveSteps(0, -100);
         if(CheckLimitSwitch(LS_NEG_Y)) {
             hit_edge = true;
         }
@@ -83,7 +83,7 @@ void setPosition(float x, float y) {
 
 
 #define BOARD_ORIGIN_X 1
-#define BOARD_ORIGIN_Y 1
+#define BOARD_ORIGIN_Y 15
 
 #define SPACE_WIDTH 5.875
 

@@ -37,29 +37,30 @@ int main(void)
     StepperInit();
     SetDDRC(GetDDRC() & ~B_ALL);
     SetPortC(GetPortC() | B_ALL);
-
+    zeroAll();
 
 
 
     /* Replace with your application code */
     while (1)
     {
+//
 //         uint8_t buttons = GetPortC() & B_ALL;
 //
 //         int steps_x = 0;
 //         int steps_y = 0;
 //
 //         if(!(buttons & B_X_NEG)) {
-//             steps_x = -1000;
+//             steps_x = -10;
 //         }
 //         if(!(buttons & B_X_POS)) {
-//             steps_x = 1000;
+//             steps_x = 10;
 //         }
 //         if(!(buttons & B_Y_NEG)) {
-//             steps_y = -1000;
+//             steps_y = -10;
 //         }
 //         if(!(buttons & B_Y_POS)) {
-//             steps_y = 1000;
+//             steps_y = 10;
 //         }
 //
 //         MoveSteps(steps_x, steps_y);
@@ -74,13 +75,13 @@ int main(void)
 
         moveToSpace(0, 0);
         _delay_ms(2500);
-        moveToSpace(7, 7);
+        moveToSpace(3, 0);
         _delay_ms(2500);
 
-//         setPosition(0,10);
-//         _delay_ms(2500);
-//         setPosition(0,-10);
-//         _delay_ms(2500);
+        moveToSpace(0,3);
+        _delay_ms(2500);
+        moveToSpace(7,7);
+        _delay_ms(2500);
 
 
     }

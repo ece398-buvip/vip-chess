@@ -80,10 +80,10 @@ bool MoveSteps(int steps_x, int steps_y) {
         }
     }
 
-    char buffer[32];
-    dtostrf((float)steps_x, 5, 3, buffer);
-    uart0_puts(buffer);
-    uart0_puts("\t\n");
+    //char buffer[32];
+    //dtostrf((float)steps_x, 5, 3, buffer);
+    //uart0_puts(buffer);
+    //uart0_puts("\t\n");
 
 
     if(CheckLimitSwitch(LS_NEG_X)) {
@@ -122,53 +122,68 @@ bool MoveSteps(int steps_x, int steps_y) {
 
 
     Timer1_initialize( timer_freq, &PulseFn, prescaler);
-
+    bool limitSwitchHitX = false;
+    bool limitSwitchHitY = false;
     while(1) {
         while(semaphore == 0);
         semaphore = 0;
 
         //keeps track of steps and deactivates stepper when number of steps is complete
 
-        bool limitSwitchHit = false;
+
         if(CheckLimitSwitch(LS_NEG_X)) {
             if(!(direction & DIR_X)) {
-                limitSwitchHit = true;
+                limitSwitchHitX = true;
             }
         }
         if (CheckLimitSwitch(LS_POS_X)) {
             if((direction & DIR_X)) {
-                limitSwitchHit = true;
+                limitSwitchHitX = true;
             }
         }
 
         if(CheckLimitSwitch(LS_NEG_Y)) {
             if(!(direction & DIR_Y)) {
-                limitSwitchHit = true;
+                limitSwitchHitY = true;
             }
         }
         if (CheckLimitSwitch(LS_POS_Y)) {
             if(direction & DIR_Y) {
-                limitSwitchHit = true;
+                limitSwitchHitY = true;
             }
         }
 
-        if(limitSwitchHit) {
-            SetPortB(GetPortB() & ~((STEP_X | STEP_Y)) );
-            Timer1_shutdown();
-            return false;
+
+
+        if(limitSwitchHitX) {
+            steps_x = 0;
+            if(steps_y == 0) {
+                SetPortB(GetPortB() & ~((STEP_X | STEP_Y)) );
+                Timer1_shutdown();
+                return false;
+            }
+        }
+
+        if(limitSwitchHitY) {
+            steps_y = 0;
+            if(steps_x == 0) {
+                SetPortB(GetPortB() & ~((STEP_X | STEP_Y)) );
+                Timer1_shutdown();
+                return false;
+            }
         }
 
 
 
 
-        if(steps_x >= 0) {
+        if(steps_x > 0) {
             steps_x--;
         } else {
             active_steppers &= ~STEP_X;
         }
 
 
-        if(steps_y >= 0) {
+        if(steps_y > 0) {
             steps_y--;
         } else {
             active_steppers &= ~STEP_Y;

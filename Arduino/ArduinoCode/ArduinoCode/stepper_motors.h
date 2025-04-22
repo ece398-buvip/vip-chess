@@ -38,6 +38,10 @@
 
 void StepperInit();
 
+int GetExtraStepsX();
+
+int GetExtraStepsY();
+
 bool MoveSteps(int steps_x, int steps_y);
 
 

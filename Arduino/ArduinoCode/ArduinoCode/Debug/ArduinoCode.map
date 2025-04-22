@@ -121,6 +121,14 @@ Discarded input sections
  .text          0x00000000        0x0 stepper_motors.o
  .data          0x00000000        0x0 stepper_motors.o
  .bss           0x00000000        0x0 stepper_motors.o
+ .text.GetExtraStepsX
+                0x00000000        0xa stepper_motors.o
+ .text.GetExtraStepsY
+                0x00000000        0xa stepper_motors.o
+ .bss.extraStepsY
+                0x00000000        0x2 stepper_motors.o
+ .bss.extraStepsX
+                0x00000000        0x2 stepper_motors.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
@@ -669,7 +677,7 @@ END GROUP
  .bss.x_position
                 0x0080010c        0x4 position_control.o
                 0x0080010c                x_position
- .bss.cnt.1949  0x00800110        0x2 stepper_motors.o
+ .bss.cnt.1951  0x00800110        0x2 stepper_motors.o
  .bss.active_steppers
                 0x00800112        0x1 stepper_motors.o
                 0x00800112                active_steppers
@@ -756,7 +764,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x250
+.debug_aranges  0x00000000      0x260
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x98 Bios/bios_io.o
@@ -773,12 +781,12 @@ END GROUP
  .debug_aranges
                 0x000001e0       0x40 position_control.o
  .debug_aranges
-                0x00000220       0x30 stepper_motors.o
+                0x00000220       0x40 stepper_motors.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1b5a
+.debug_info     0x00000000     0x1bb0
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4      0x3db Bios/bios_io.o
@@ -788,9 +796,9 @@ END GROUP
  .debug_info    0x000010f8      0x1b4 limit_switches.o
  .debug_info    0x000012ac      0x2c9 main.o
  .debug_info    0x00001575      0x2a0 position_control.o
- .debug_info    0x00001815      0x345 stepper_motors.o
+ .debug_info    0x00001815      0x39b stepper_motors.o
 
-.debug_abbrev   0x00000000      0xd78
+.debug_abbrev   0x00000000      0xd90
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_abbrev  0x000005a2      0x106 Bios/bios_io.o
@@ -800,9 +808,9 @@ END GROUP
  .debug_abbrev  0x0000097f       0xd9 limit_switches.o
  .debug_abbrev  0x00000a58      0x134 main.o
  .debug_abbrev  0x00000b8c       0xf3 position_control.o
- .debug_abbrev  0x00000c7f       0xf9 stepper_motors.o
+ .debug_abbrev  0x00000c7f      0x111 stepper_motors.o
 
-.debug_line     0x00000000     0x11a1
+.debug_line     0x00000000     0x11cd
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000134      0x2ba Bios/bios_io.o
@@ -812,9 +820,9 @@ END GROUP
  .debug_line    0x000009e3      0x138 limit_switches.o
  .debug_line    0x00000b1b      0x1cb main.o
  .debug_line    0x00000ce6      0x1cb position_control.o
- .debug_line    0x00000eb1      0x2f0 stepper_motors.o
+ .debug_line    0x00000eb1      0x31c stepper_motors.o
 
-.debug_frame    0x00000000      0x580
+.debug_frame    0x00000000      0x5a0
  *(.debug_frame)
  .debug_frame   0x00000000      0x114 Bios/bios_io.o
  .debug_frame   0x00000114       0xa8 Bios/bios_timer_int.o
@@ -823,9 +831,9 @@ END GROUP
  .debug_frame   0x000003b8       0x6c limit_switches.o
  .debug_frame   0x00000424       0x24 main.o
  .debug_frame   0x00000448       0xcc position_control.o
- .debug_frame   0x00000514       0x6c stepper_motors.o
+ .debug_frame   0x00000514       0x8c stepper_motors.o
 
-.debug_str      0x00000000      0x7c4
+.debug_str      0x00000000      0x7fa
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_str     0x00000208      0x1d9 Bios/bios_io.o
@@ -842,8 +850,8 @@ END GROUP
                                 0x202 (size before relaxing)
  .debug_str     0x000006d9       0x93 position_control.o
                                 0x21d (size before relaxing)
- .debug_str     0x0000076c       0x58 stepper_motors.o
-                                0x25d (size before relaxing)
+ .debug_str     0x0000076c       0x8e stepper_motors.o
+                                0x293 (size before relaxing)
 
 .debug_loc      0x00000000     0x12d6
  *(.debug_loc)
@@ -873,7 +881,7 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x1d0
+.debug_ranges   0x00000000      0x1e0
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x88 Bios/bios_io.o
  .debug_ranges  0x00000088       0x20 Bios/bios_timer_int.o
@@ -882,7 +890,7 @@ END GROUP
  .debug_ranges  0x00000140       0x30 limit_switches.o
  .debug_ranges  0x00000170       0x10 main.o
  .debug_ranges  0x00000180       0x30 position_control.o
- .debug_ranges  0x000001b0       0x20 stepper_motors.o
+ .debug_ranges  0x000001b0       0x30 stepper_motors.o
 
 .debug_macro
  *(.debug_macro)

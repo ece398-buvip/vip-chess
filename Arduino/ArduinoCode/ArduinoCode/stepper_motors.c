@@ -46,7 +46,26 @@ void StepperInit(void)
 
 }
 
+int extraStepsX = 0;
+int extraStepsY = 0;
 
+int GetExtraStepsX() {
+    return extraStepsX;
+}
+
+int GetExtraStepsY() {
+    return extraStepsY;
+}
+
+int dirX = 0;
+int dirY = 0;
+
+int GetDirX() {
+
+}
+int GetDirY() {
+
+}
 
 
 
@@ -80,6 +99,12 @@ bool MoveSteps(int steps_x, int steps_y) {
         }
     }
 
+    extraStepsX = 0;
+    extraStepsY = 0;
+
+    bool limitSwitchHitX = false;
+    bool limitSwitchHitY = false;
+
     //char buffer[32];
     //dtostrf((float)steps_x, 5, 3, buffer);
     //uart0_puts(buffer);
@@ -88,24 +113,32 @@ bool MoveSteps(int steps_x, int steps_y) {
 
     if(CheckLimitSwitch(LS_NEG_X)) {
         if(steps_x < 0) {
-            return false;
+            limitSwitchHitX = true;
+            extraStepsX = steps_x;
         }
     }
     if (CheckLimitSwitch(LS_POS_X)) {
         if(steps_x > 0) {
-            return false;
+            limitSwitchHitX = true;
+            extraStepsX = steps_x;
         }
     }
 
     if(CheckLimitSwitch(LS_NEG_Y)) {
         if(steps_y < 0) {
-            return false;
+            limitSwitchHitY = true;
+            extraStepsY = steps_y;
         }
     }
     if (CheckLimitSwitch(LS_POS_Y)) {
         if(steps_y > 0) {
-            return false;
+            limitSwitchHitY = true;
+            extraStepsY = steps_y;
         }
+    }
+
+    if(limitSwitchHitX && limitSwitchHitY) {
+        return false;
     }
 
 
@@ -122,8 +155,7 @@ bool MoveSteps(int steps_x, int steps_y) {
 
 
     Timer1_initialize( timer_freq, &PulseFn, prescaler);
-    bool limitSwitchHitX = false;
-    bool limitSwitchHitY = false;
+
     while(1) {
         while(semaphore == 0);
         semaphore = 0;
@@ -134,22 +166,26 @@ bool MoveSteps(int steps_x, int steps_y) {
         if(CheckLimitSwitch(LS_NEG_X)) {
             if(!(direction & DIR_X)) {
                 limitSwitchHitX = true;
+                extraStepsX = -steps_x
             }
         }
         if (CheckLimitSwitch(LS_POS_X)) {
             if((direction & DIR_X)) {
                 limitSwitchHitX = true;
+                extraStepsX = steps_x;
             }
         }
 
         if(CheckLimitSwitch(LS_NEG_Y)) {
             if(!(direction & DIR_Y)) {
                 limitSwitchHitY = true;
+                extraStepsY = -steps_y;
             }
         }
         if (CheckLimitSwitch(LS_POS_Y)) {
             if(direction & DIR_Y) {
                 limitSwitchHitY = true;
+                extraStepsY = steps_y;
             }
         }
 
@@ -195,8 +231,13 @@ bool MoveSteps(int steps_x, int steps_y) {
         }
     }
 
+
+
     SetPortB(GetPortB() & ~((STEP_X | STEP_Y)) );
     Timer1_shutdown();
+    if(limitSwitchHitX || limitSwitchHitY) {
+
+    }
     return true;
 }
 

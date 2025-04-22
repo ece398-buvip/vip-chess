@@ -13,21 +13,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000c9c  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000250  00000000  00000000  00000cdc  2**0
+  5 .debug_aranges 00000260  00000000  00000000  00000cdc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001b5a  00000000  00000000  00000f2c  2**0
+  6 .debug_info   00001bb0  00000000  00000000  00000f3c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000d78  00000000  00000000  00002a86  2**0
+  7 .debug_abbrev 00000d90  00000000  00000000  00002aec  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000011a1  00000000  00000000  000037fe  2**0
+  8 .debug_line   000011cd  00000000  00000000  0000387c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000580  00000000  00000000  000049a0  2**2
+  9 .debug_frame  000005a0  00000000  00000000  00004a4c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000007c4  00000000  00000000  00004f20  2**0
+ 10 .debug_str    000007fa  00000000  00000000  00004fec  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000012d6  00000000  00000000  000056e4  2**0
+ 11 .debug_loc    000012d6  00000000  00000000  000057e6  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000001d0  00000000  00000000  000069ba  2**0
+ 12 .debug_ranges 000001e0  00000000  00000000  00006abc  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -859,44 +859,34 @@ void moveToSpace(uint8_t x, uint8_t y) {
  4ce:	08 95       	ret
 
 000004d0 <PulseFn>:
-void PulseFn(void) {
+    return extraStepsX;
+}
 
-    static uint16_t cnt = 0;
-
-    //increment count if still under the max value, otherwise reset
-    if(cnt<pwm_res) cnt++;
- 4d0:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <cnt.1949>
- 4d4:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <cnt.1949+0x1>
+int GetExtraStepsY() {
+    return extraStepsY;
+}
+ 4d0:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <cnt.1951>
+ 4d4:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <cnt.1951+0x1>
  4d8:	8a 30       	cpi	r24, 0x0A	; 10
  4da:	91 05       	cpc	r25, r1
  4dc:	30 f4       	brcc	.+12     	; 0x4ea <PulseFn+0x1a>
  4de:	01 96       	adiw	r24, 0x01	; 1
- 4e0:	90 93 11 01 	sts	0x0111, r25	; 0x800111 <cnt.1949+0x1>
- 4e4:	80 93 10 01 	sts	0x0110, r24	; 0x800110 <cnt.1949>
+ 4e0:	90 93 11 01 	sts	0x0111, r25	; 0x800111 <cnt.1951+0x1>
+ 4e4:	80 93 10 01 	sts	0x0110, r24	; 0x800110 <cnt.1951>
  4e8:	07 c0       	rjmp	.+14     	; 0x4f8 <PulseFn+0x28>
-    else {
-        cnt = 0;
- 4ea:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <cnt.1949+0x1>
- 4ee:	10 92 10 01 	sts	0x0110, r1	; 0x800110 <cnt.1949>
-        semaphore = 1;
+ 4ea:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <cnt.1951+0x1>
+ 4ee:	10 92 10 01 	sts	0x0110, r1	; 0x800110 <cnt.1951>
  4f2:	81 e0       	ldi	r24, 0x01	; 1
  4f4:	80 93 13 01 	sts	0x0113, r24	; 0x800113 <semaphore>
-    }
-
-    //generates the pulse for the percentage of the duty cycle
-    if(duty_cycle>cnt) {
- 4f8:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <cnt.1949>
- 4fc:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <cnt.1949+0x1>
+ 4f8:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <cnt.1951>
+ 4fc:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <cnt.1951+0x1>
  500:	05 97       	sbiw	r24, 0x05	; 5
  502:	40 f4       	brcc	.+16     	; 0x514 <PulseFn+0x44>
-        SetPortB(GetPortB() | active_steppers);
  504:	0e 94 77 00 	call	0xee	; 0xee <GetPortB>
  508:	90 91 12 01 	lds	r25, 0x0112	; 0x800112 <active_steppers>
  50c:	89 2b       	or	r24, r25
  50e:	0e 94 7a 00 	call	0xf4	; 0xf4 <SetPortB>
  512:	08 95       	ret
-    } else {
-        SetPortB(GetPortB() & ~active_steppers);
  514:	0e 94 77 00 	call	0xee	; 0xee <GetPortB>
  518:	90 91 12 01 	lds	r25, 0x0112	; 0x800112 <active_steppers>
  51c:	90 95       	com	r25
@@ -905,18 +895,10 @@ void PulseFn(void) {
  524:	08 95       	ret
 
 00000526 <StepperInit>:
-}
-
-//sets up the stepper motor pins as outputs
-void StepperInit(void)
-{
-    LimitSwitchesInit();
  526:	0e 94 1b 01 	call	0x236	; 0x236 <LimitSwitchesInit>
-    SetDDRB(GetDDRB() | (STEP_X | STEP_Y) | (DIR_X | DIR_Y));
  52a:	0e 94 80 00 	call	0x100	; 0x100 <GetDDRB>
  52e:	8f 60       	ori	r24, 0x0F	; 15
  530:	0e 94 83 00 	call	0x106	; 0x106 <SetDDRB>
-    SetPortB(GetPortB() & ~((STEP_X | STEP_Y)| (DIR_X | DIR_Y)) );
  534:	0e 94 77 00 	call	0xee	; 0xee <GetPortB>
  538:	80 7f       	andi	r24, 0xF0	; 240
  53a:	0e 94 7a 00 	call	0xf4	; 0xf4 <SetPortB>

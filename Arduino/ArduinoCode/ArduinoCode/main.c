@@ -15,7 +15,8 @@
 #include "Bios/bios_uart0.h"
 #include "commands.h"
 #include "position_control.h"
-
+#include "magnet.h"
+#include "Bios/bios_leds.h"
 
 
 
@@ -35,15 +36,21 @@ int main(void)
     CommandsInit();
 
     StepperInit();
-    SetDDRC(GetDDRC() & ~B_ALL);
-    SetPortC(GetPortC() | B_ALL);
-    zeroAll();
+    MagnetInit();
+    MagnetOn();
+    ledsInit();
+    ledsUpdate();
+//     SetDDRC(GetDDRC() & ~B_ALL);
+//     SetPortC(GetPortC() | B_ALL);
+
 
 
 
     /* Replace with your application code */
     while (1)
     {
+        zeroAll();
+        ledsUpdate();
 //
 //         uint8_t buttons = GetPortC() & B_ALL;
 //
@@ -81,6 +88,12 @@ int main(void)
         moveToSpace(0,3);
         _delay_ms(2500);
         moveToSpace(7,7);
+        _delay_ms(2500);
+        moveToSpace(7,0);
+        _delay_ms(2500);
+        moveToSpace(0,7);
+        _delay_ms(2500);
+        moveToSpace(3,4);
         _delay_ms(2500);
 
 

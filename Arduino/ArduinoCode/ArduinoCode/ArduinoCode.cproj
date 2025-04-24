@@ -139,6 +139,12 @@
     <Compile Include="Bios\bios_io.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Bios\bios_leds.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Bios\bios_leds.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Bios\bios_timer_int.c">
       <SubType>compile</SubType>
     </Compile>
@@ -149,6 +155,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Bios\bios_uart0.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Bios\light_ws2812.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Bios\light_ws2812.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Bios\ws2812_config.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="commands.c">
@@ -164,6 +179,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="limit_switches.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="magnet.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="magnet.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">

@@ -4,13 +4,19 @@
 
 Bios\bios_io.c
 
+Bios\bios_leds.c
+
 Bios\bios_timer_int.c
 
 Bios\bios_uart0.c
 
+Bios\light_ws2812.c
+
 commands.c
 
 limit_switches.c
+
+magnet.c
 
 main.c
 

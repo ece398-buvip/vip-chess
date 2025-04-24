@@ -77,19 +77,22 @@ void setPosition(float x, float y) {
     if(succeeded) {
         x_position += delta_x;
         y_position += delta_y;
+    } else {
+        x_position += delta_x - GetExtraStepsX();
+        y_position += delta_y - GetExtraStepsY();
     }
 
 }
 
 
-#define BOARD_ORIGIN_X 1
-#define BOARD_ORIGIN_Y 15
+#define BOARD_ORIGIN_X 10.2
+#define BOARD_ORIGIN_Y 0.85
 
-#define SPACE_WIDTH 5.875
+#define SPACE_WIDTH 6.05
 
 
 void moveToSpace(uint8_t x, uint8_t y) {
     float x_cm = BOARD_ORIGIN_X + SPACE_WIDTH * x;
-    float y_cm = BOARD_ORIGIN_X + SPACE_WIDTH * y;
+    float y_cm = BOARD_ORIGIN_Y + SPACE_WIDTH * y;
     setPosition(x_cm, y_cm);
 }

@@ -60,12 +60,12 @@ int GetExtraStepsY() {
 int dirX = 0;
 int dirY = 0;
 
-int GetDirX() {
-
-}
-int GetDirY() {
-
-}
+// int GetDirX() {
+//
+// }
+// int GetDirY() {
+//
+// }
 
 
 
@@ -166,7 +166,7 @@ bool MoveSteps(int steps_x, int steps_y) {
         if(CheckLimitSwitch(LS_NEG_X)) {
             if(!(direction & DIR_X)) {
                 limitSwitchHitX = true;
-                extraStepsX = -steps_x
+                extraStepsX = -steps_x;
             }
         }
         if (CheckLimitSwitch(LS_POS_X)) {

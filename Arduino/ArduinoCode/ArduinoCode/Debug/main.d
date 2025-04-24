@@ -20,7 +20,8 @@ main.d main.o: .././main.c .././global.h \
  .././Bios/bios_uart0.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
- .././commands.h .././position_control.h
+ .././commands.h .././position_control.h .././magnet.h \
+ .././Bios/bios_leds.h
 
 .././global.h:
 
@@ -73,3 +74,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 .././commands.h:
 
 .././position_control.h:
+
+.././magnet.h:
+
+.././Bios/bios_leds.h:

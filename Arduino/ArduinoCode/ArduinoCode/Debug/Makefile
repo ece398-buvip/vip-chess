@@ -39,10 +39,13 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../Bios/bios_io.c \
+../Bios/bios_leds.c \
 ../Bios/bios_timer_int.c \
 ../Bios/bios_uart0.c \
+../Bios/light_ws2812.c \
 ../commands.c \
 ../limit_switches.c \
+../magnet.c \
 ../main.c \
 ../piece_movement.c \
 ../position_control.c \
@@ -57,10 +60,13 @@ ASM_SRCS +=
 
 OBJS +=  \
 Bios/bios_io.o \
+Bios/bios_leds.o \
 Bios/bios_timer_int.o \
 Bios/bios_uart0.o \
+Bios/light_ws2812.o \
 commands.o \
 limit_switches.o \
+magnet.o \
 main.o \
 piece_movement.o \
 position_control.o \
@@ -68,10 +74,13 @@ stepper_motors.o
 
 OBJS_AS_ARGS +=  \
 Bios/bios_io.o \
+Bios/bios_leds.o \
 Bios/bios_timer_int.o \
 Bios/bios_uart0.o \
+Bios/light_ws2812.o \
 commands.o \
 limit_switches.o \
+magnet.o \
 main.o \
 piece_movement.o \
 position_control.o \
@@ -79,10 +88,13 @@ stepper_motors.o
 
 C_DEPS +=  \
 Bios/bios_io.d \
+Bios/bios_leds.d \
 Bios/bios_timer_int.d \
 Bios/bios_uart0.d \
+Bios/light_ws2812.d \
 commands.d \
 limit_switches.d \
+magnet.d \
 main.d \
 piece_movement.d \
 position_control.d \
@@ -90,10 +102,13 @@ stepper_motors.d
 
 C_DEPS_AS_ARGS +=  \
 Bios/bios_io.d \
+Bios/bios_leds.d \
 Bios/bios_timer_int.d \
 Bios/bios_uart0.d \
+Bios/light_ws2812.d \
 commands.d \
 limit_switches.d \
+magnet.d \
 main.d \
 piece_movement.d \
 position_control.d \
@@ -120,6 +135,13 @@ Bios/bios_io.o: ../Bios/bios_io.c
 	@echo Finished building: $<
 	
 
+Bios/bios_leds.o: ../Bios/bios_leds.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 Bios/bios_timer_int.o: ../Bios/bios_timer_int.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -134,6 +156,13 @@ Bios/bios_uart0.o: ../Bios/bios_uart0.c
 	@echo Finished building: $<
 	
 
+Bios/light_ws2812.o: ../Bios/light_ws2812.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ./commands.o: .././commands.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -142,6 +171,13 @@ Bios/bios_uart0.o: ../Bios/bios_uart0.c
 	
 
 ./limit_switches.o: .././limit_switches.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./magnet.o: .././magnet.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
